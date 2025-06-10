@@ -3,6 +3,7 @@
 use app\components\grid\ActionColumn;
 use app\components\grid\DateColumn;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ActionLogSearch */
@@ -13,6 +14,7 @@ $this->params['breadcrumbs'][] = 'Логи';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="action-log-index">
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_search', ['model' => $searchModel]) ?>
 
