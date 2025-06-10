@@ -28,8 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
 //        'filterModel' => $searchModel,
         'columns' => [
-            ['class' => SerialColumn::class],
-
             'id',
             'track_number',
             [
