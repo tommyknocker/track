@@ -1,0 +1,24 @@
+actor: ApiTester
+modules:
+  enabled:
+    - Asserts
+    - REST
+    - PhpBrowser
+    - Yii2:
+        part: [ORM, FIXTURE]
+        transaction: false
+        cleanup: false
+    - Yii2:
+        part: [ORM, FIXTURE]
+        transaction: false
+        cleanup: false
+    - Db:
+        dsn: 'mysql:dbname=track;host=172.21.0.2'
+        user: 'user'
+        password: 'password'
+  config:
+    PhpBrowser:
+      url: 'http://localhost:8282/api/'
+    REST:
+      depends: PhpBrowser
+      url: 'http://localhost:8282/api/'

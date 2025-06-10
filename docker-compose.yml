@@ -1,0 +1,41 @@
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8282:80"
+    volumes:
+      - ./data/hosts:/etc/nginx/conf.d
+      - .:/var/www
+      - ./logs:/var/log/nginx
+    links:
+      - php
+  php:
+    build: .
+    links:
+      - mysql
+    volumes:
+      - .:/var/www
+  mysql:
+    image: mariadb:latest
+    ports:
+      - "3906:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./data/init.sql:/data/init.sql
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpass
+      MARIADB_USER: user
+      MARIADB_PASSWORD: password
+    command: --init-file /data/init.sql
+#    command: mariadbd
+#      --sql_mode=""
+#      --character-set-server=utf8
+#      --collation-server=utf8_general_ci
+#      --innodb-flush-log-at-trx-commit=0
+#      --log_bin=OFF
+#      --query_cache_size=128M
+#      --innodb-buffer-pool-size=2G
+#      --innodb-buffer-pool-instances=8
+#      --innodb-flush-method=littlesync
+#      --innodb-use-native-aio=OFF
+
