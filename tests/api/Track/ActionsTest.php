@@ -74,11 +74,26 @@ class ActionsTest extends Unit
         ];
         $I->amBearerAuthenticated($this->user->access_token);
         $I->sendPost('/track', $data);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
 
         $I->sendGet('/track');
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseContains('test3');
+    }
+
+    public function testCreateDuplicate(): void
+    {
+        $I = $this->tester;
+        $data = [
+            'track_number' => 'test1',
+        ];
+        $I->amBearerAuthenticated($this->user->access_token);
+        $I->sendPost('/track', $data);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseContains('error');
     }
 
     public function testGet(): void
