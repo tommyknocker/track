@@ -8,20 +8,38 @@ use yii\helpers\Url;
 class SearchButtons extends Widget
 {
 
+    /**
+     * @var string
+     */
     public $resetUrl;
 
+    /**
+     * @var bool
+     */
     public $exportToCSV;
 
+    /**
+     * @var string
+     */
     public $exportToCSVRoute;
 
+    /**
+     * @var bool
+     */
     public $extendedFilter = false;
 
+    /**
+     * @var bool
+     */
     public $showHr = true;
 
+    /**
+     * @var string
+     */
     public $clearUrl;
 
 
-    public function run()
+    public function run(): string
     {
         if (!$this->resetUrl) {
             $this->resetUrl = Url::to(['index']);

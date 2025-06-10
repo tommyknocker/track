@@ -186,7 +186,7 @@ class ArrayHelper extends \yii\helpers\ArrayHelper
     }
 
 
-    public static function array2csv($data, $delimiter = ';', $enclosure = '"', $escape_char = "\\")
+    public static function array2csv($data, $delimiter = ';', $enclosure = '"', $escape_char = "\\"): false|string
     {
         $f = fopen('php://memory', 'rb+');
         foreach ($data as $item) {
@@ -197,7 +197,7 @@ class ArrayHelper extends \yii\helpers\ArrayHelper
     }
 
 
-    public static function csv2array($file, $delimiter = ';')
+    public static function csv2array($file, $delimiter = ';'): array
     {
         return array_map('str_getcsv', file($file));
     }
