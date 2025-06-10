@@ -1,12 +1,11 @@
 <?php
 
-use kartik\widgets\DatePicker;
-use yii\grid\SerialColumn;
+use app\components\grid\ActionColumn;
+use app\components\grid\DateColumn;
 use app\models\Track;
-use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\grid\SerialColumn;
+use yii\helpers\Html;
 
 /** @var yii\web\View $this */
 /** @var app\models\TrackSearch $searchModel */
@@ -40,34 +39,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Track::getStatusList()[$model->status];
                 }
             ],
+            ['class' => DateColumn::class],
             [
-                'attribute' => 'created_at',
-                'format' => 'datetime',
-                'filter' => DatePicker::widget([
-                    'name' => 'TrackSearch[created_at]',
-                    'value' => $searchModel->created_at,
-                    'model' => $searchModel,
-                    'pluginOptions' => [
-                        'format' => 'dd.mm.yyyy',
-                        'todayHighlight' => true
-                    ],
-                ]),
-            ],
-            [
-                'attribute' => 'updated_at',
-                'format' => 'datetime',
-                'filter' => DatePicker::widget([
-                    'name' => 'TrackSearch[updated_at]',
-                    'value' => $searchModel->updated_at,
-                    'model' => $searchModel,
-                    'pluginOptions' => [
-                        'format' => 'dd.mm.yyyy',
-                        'todayHighlight' => true
-                    ],
-                ]),
-            ],
-            [
-                'class' => \app\components\grid\ActionColumn::class,
+                'class' => ActionColumn::class,
                 'visibleButtons' => [
                     'view' => false,
                 ]
