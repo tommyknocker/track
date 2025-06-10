@@ -67,12 +67,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]),
             ],
             [
-                'class' => ActionColumn::class,
-                'template' => '{update} {delete}',
-                'urlCreator' => function ($action, Track $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                }
-            ],
+                'class' => \app\components\grid\ActionColumn::class,
+                'visibleButtons' => [
+                    'view' => false,
+                ]
+            ]
         ],
     ]); ?>
 
