@@ -2,10 +2,10 @@
 
 namespace app\models;
 
+use app\components\helpers\ArrayHelper;
 use Exception;
 use RuntimeException;
 use Yii;
-use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
 /**
@@ -234,5 +234,14 @@ class User extends Model implements IdentityInterface
             $this->patronymic
         ];
         return implode(' ', array_filter($nameParts));
+    }
+
+    public static function getList(): array
+    {
+        return ArrayHelper::map(self::find()
+            ->select(['id', 'email'])
+            ->orderBy(['email' => SORT_ASC])
+            ->asArray()
+            ->all(), 'id', 'email');
     }
 }
