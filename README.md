@@ -16,6 +16,7 @@ sudo docker compose up -d
 Выполнить одноразово
 
 ```bash
+composer install
 php yii migrate
 ```
 
