@@ -38,3 +38,8 @@ sudo docker inspect   -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}
 ./vendor/phpunit/phpunit/phpunit --configuration=tests/phpunit/phpunit.xml tests/phpunit/functional/
 ```
 
+## API
+
+Запросы к API идут через endpoint http://localhost:8282/api/
+
+Реализованы все методы с Track, включая массовое обновление статуса. Более подробно можно посмотреть в config/rules.php
