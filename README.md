@@ -13,6 +13,12 @@ sudo docker compose build
 sudo docker compose up -d
 ```
 
+Выполнить одноразово
+
+```bash
+php yii migrate
+```
+
 Затем открыть в браузере http://localhost:8282
 
 Если появляется ошибка с базой данных, наберите команду:
