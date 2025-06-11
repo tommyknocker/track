@@ -33,4 +33,12 @@ class TrackTest extends TestCase
         $track->track_number = 'test3';
         self::assertFalse($track->save());
     }
+
+    public function testWrongStatus(): void
+    {
+        $track = new Track();
+        $track->track_number = 'test3';
+        $track->status = 99;
+        self::assertFalse($track->save());
+    }
 }
