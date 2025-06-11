@@ -71,6 +71,7 @@ class ActionsTest extends Unit
         $I = $this->tester;
         $data = [
             'track_number' => 'test3',
+            'status' => Track::STATUS_ID_IN_PROGRESS,
         ];
         $I->amBearerAuthenticated($this->user->access_token);
         $I->sendPost('/track', $data);
@@ -81,6 +82,7 @@ class ActionsTest extends Unit
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseContains('test3');
+        $I->seeResponseContains('"status":' . Track::STATUS_ID_IN_PROGRESS);
     }
 
     public function testCreateDuplicate(): void
@@ -88,6 +90,20 @@ class ActionsTest extends Unit
         $I = $this->tester;
         $data = [
             'track_number' => 'test1',
+        ];
+        $I->amBearerAuthenticated($this->user->access_token);
+        $I->sendPost('/track', $data);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseContains('error');
+    }
+
+    public function testCreateWrongStatus(): void
+    {
+        $I = $this->tester;
+        $data = [
+            'track_number' => 'test3',
+            'status' => 99
         ];
         $I->amBearerAuthenticated($this->user->access_token);
         $I->sendPost('/track', $data);

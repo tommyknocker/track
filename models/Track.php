@@ -81,16 +81,4 @@ class Track extends Model
             self::STATUS_ID_CANCELLED => 'Отменен',
         ];
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function beforeValidate(): bool
-    {
-        $result = parent::beforeValidate();
-        if (!$this->isSearchModel() && is_null($this->status)) {
-            $this->status = self::STATUS_ID_NEW;
-        }
-        return $result;
-    }
 }
