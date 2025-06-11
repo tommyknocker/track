@@ -6,7 +6,7 @@ git clone git@github.com:tommyknocker/track.git
 
 ## Запуск
 
-Зайти в директорию трек и выполнить:
+Зайти в директорию track и выполнить:
 
 ```bash
 sudo docker compose build
