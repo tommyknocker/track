@@ -42,7 +42,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => ActionColumn::class,
                 'visibleButtons' => [
                     'view' => false,
-                ]
+                ],
+                'actionLog' => true
             ]
         ],
     ]); ?>

@@ -18,6 +18,10 @@ class ActionColumn extends \yii\grid\ActionColumn
      */
     public $buttonOptions = ['class' => 'btn btn-sm'];
 
+    /**
+     * @var bool
+     */
+    public $actionLog = false;
 
     /**
      * {@inheritdoc}
@@ -46,7 +50,7 @@ class ActionColumn extends \yii\grid\ActionColumn
 
     protected function initTemplate()
     {
-        if (Yii::$app->user->can(Yii::$app->id . '-action-log-index')) {
+        if ($this->actionLog) {
             $this->template = '{actionLog} ' . $this->template;
         }
     }
