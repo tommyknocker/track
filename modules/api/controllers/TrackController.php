@@ -5,8 +5,9 @@ namespace app\modules\api\controllers;
 use app\models\Track;
 use app\modules\api\common\ApiController;
 use Yii;
+use yii\rest\Controller;
 
-class TrackController extends ApiController
+class TrackController extends Controller
 {
     public function verbs(): array
     {
