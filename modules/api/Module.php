@@ -40,11 +40,6 @@ class Module extends \yii\base\Module
     public function init(): void
     {
         parent::init();
-        Yii::$app->user->enableSession = false;
-        Yii::$app->request->enableCsrfCookie = false;
-        Yii::$app->user->enableAutoLogin = false;
-        Yii::$app->user->loginUrl = null;
-        Yii::$app->errorHandler->errorAction = null;
         Yii::$app->response->format = Response::FORMAT_JSON;
     }
 }
